@@ -8,6 +8,8 @@ I decided to extend my AWS networking lab using Terraform by creating a **privat
 
 ## 📋 Project Overview
 
+<img width="837" height="736" alt="image" src="https://github.com/user-attachments/assets/1a911c09-4df1-4981-a5ce-8ddd6245e131" />
+
 **Terraform Goal:**
 Use Terraform to declaratively provision a private subnet, associate it with a dedicated route table, and secure it with a custom network ACL, keeping sensitive resources private.
 
