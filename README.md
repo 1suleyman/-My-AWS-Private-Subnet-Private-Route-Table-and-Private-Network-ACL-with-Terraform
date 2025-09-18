@@ -33,10 +33,9 @@ terraform-private-subnet/
 
 You can view the **Terraform files here**:
 
-* [main.tf](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/main.tf)
-* [variables.tf](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/variables.tf)
-* [outputs.tf](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/outputs.tf)
-* [terraform.tfvars](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/terraform.tfvars)
+* [main.tf](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/main.tf)
+* [variables.tf](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/variables.tf)
+* [outputs.tf](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/outputs.tf)
 
 ---
 
@@ -46,7 +45,7 @@ You can view the **Terraform files here**:
 
 I created a new subnet in my VPC to host private resources like databases.
 
-**Terraform File:** [main.tf private subnet section](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/main.tf#L7)
+**Terraform File:** [main.tf private subnet section](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/main.tf)
 
 💡 **Tip:** I assigned the CIDR block `10.0.1.0/24` to avoid overlapping with my public subnet (`10.0.0.0/24`).
 
@@ -56,7 +55,7 @@ I created a new subnet in my VPC to host private resources like databases.
 
 I created a dedicated route table for the private subnet to ensure it only routes traffic internally.
 
-**Terraform File:** [main.tf private route table section](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/main.tf#L15)
+**Terraform File:** [main.tf private route table section](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/main.tf)
 
 💡 **Tip:** Without a route to the internet gateway, my private subnet cannot access the internet directly.
 
@@ -66,7 +65,7 @@ I created a dedicated route table for the private subnet to ensure it only route
 
 I created a custom network ACL for my private subnet to restrict traffic.
 
-**Terraform File:** [main.tf private network ACL section](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/main.tf#L25)
+**Terraform File:** [main.tf private network ACL section](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/main.tf)
 
 💡 **Tip:** Custom network ACLs start with **deny all inbound/outbound traffic**. I can customize them later when I know exactly which traffic sources to allow.
 
@@ -76,7 +75,7 @@ I created a custom network ACL for my private subnet to restrict traffic.
 
 I associated my new private network ACL with the private subnet to enforce rules.
 
-**Terraform File:** [main.tf subnet ACL association section](https://github.com/1suleyman/-AWS-private-subnet-route-table-NACL-Hands-On-Lab/blob/main/main.tf#L40)
+**Terraform File:** [main.tf subnet ACL association section](https://github.com/1suleyman/-My-AWS-Private-Subnet-Private-Route-Table-and-Private-Network-ACL-with-Terraform/blob/main/terraform-private-subnet/main.tf)
 
 💡 **Tip:** ACL rules only take effect when associated with a subnet.
 
