@@ -61,6 +61,12 @@ resource "aws_route_table_association" "public_subnet_assoc" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
+resource "aws_route" "public_route_to_igw" {
+  route_table_id         = aws_route_table.public_route_table.id
+  destination_cidr_block = "${var.internet_cidr_block}"
+  gateway_id             = aws_internet_gateway.my_igw.id
+}
+
 # private route table
 
 resource "aws_route_table" "private_route_table" {
@@ -87,6 +93,14 @@ resource "aws_security_group" "networking_part2_sg" {
     description = "HTTP from anywhere"
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["${var.internet_cidr_block}"]
+  }
+
+  ingress {
+    description = "SSH from anywhere for EC2 Instance Connect"
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["${var.internet_cidr_block}"]
   }
